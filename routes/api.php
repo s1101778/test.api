@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +31,7 @@ php artisan schedule:list 查看排程
 */
 
 Route::prefix('auth')->group(function(){
-    Route::post('register',[AuthController::claaa,'register']);
+    Route::get('register',[AuthController::class,'register']);
     Route::post('login',[AuthController::class,'login']);
 });
 Route::get('sendmail',[Controller::class,'sendmail']);
@@ -51,4 +51,4 @@ Route::prefix('test')->group(function(){
 
 
 
-});
+

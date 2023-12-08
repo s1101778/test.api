@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 #use Illuminate\Support\Str;
 #use App\Models\User;
 #use Illuminate\Support\Facades\Validator;
-#use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 #use Image;
 #use Illuminate\Support\Facades\Storage;
 use App\Repositories\UserRepository;
@@ -18,7 +18,7 @@ class AuthController extends Controller
 {
     protected $userRepository;
 
-    public function __construct(UserRepository $user Repository)
+    public function __construct(UserRepository $user)
     {
         $this->userRepository=$userRepository;
     }

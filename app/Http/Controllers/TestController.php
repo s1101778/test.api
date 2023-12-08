@@ -15,7 +15,8 @@ class TestController extends Controller
 
     public function test1()
     {
-        return response()->json(['success'=>$BB_bulletin],200);
+        #return response()->json(['success'=>$BB_bulletin],200);
+        return "test1";
     }
     public function test2()
     {

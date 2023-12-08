@@ -52,7 +52,7 @@ class UserRepository
     public function login($data)
     {
         $userdata=[
-            'account'=>$data->account;
+            'account'=>$data->account,
             'password'=>$data->password
         ];
 
