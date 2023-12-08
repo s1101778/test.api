@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TestController;
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "api" middleware group. Make something great!
 |
+php artisan passport:install
+
 php artisan make:model Name --migration
 
 php artisan make:migration update_flights_table
@@ -50,8 +53,13 @@ Route::prefix('forum')->group(function(){
     Route::middleware('auth:api')->group(function(){
         Route::post('post',[PostController::class,'post']);
         Route::post('like_post',[PostController::class,'like_post']);
+        Route::post('del_post',[PostController::class,'del_post']);
+        Route::post('comment',[CommentController::class,'comment']);
+        Route::post('like_comment',[CommentController::class,'like_comment']);
+        Route::post('del_comment',[CommentController::class,'del_comment']);
     });
     Route::post('get_post',[PostController::class,'get_post']);
+    Route::post('get_comment',[CommentController::class,'get_comment']);
 });
 
 Route::get('sendmail',[PostController::class,'post']);

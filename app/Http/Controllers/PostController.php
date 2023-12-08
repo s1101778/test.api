@@ -43,6 +43,28 @@ class PostController extends Controller
             }
         }
     }
+    
+    public function del_post(Request $data)
+    {
+        $validator=Validator::make($data->all(),[
+            'post_id'=>'required|exists:posts,id',
+        ],[
+            'required'=>'欄位沒有填寫完整!',
+            'post_id.exists'=>'貼文不存在',
+        ]);
+        if($validator->fails()){
+            return response()->json(['error'=>$validator->errors()->first()],401);
+        }else{
+            $Post=Post::where([
+                'user_id'=>Auth::user()->id,
+                'id'=>$data->post_id
+            ])->delete();
+            if($Post==1){
+                return response()->json(['success'=>'成功刪除貼文'],200);
+            }
+        }
+    }
+
     public function like_post(Request $data)
     {
         if(Post::find($data->post_id)){
